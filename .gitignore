@@ -105,3 +105,6 @@ venv.bak/
 
 
 .idea/
+
+# localsettings to project
+localsettings.py
