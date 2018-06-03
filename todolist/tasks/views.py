@@ -4,20 +4,23 @@ from .models import Category, Task
 
 
 def index(request):
-    task = Task.objects.all()
+    tasks = Task.objects.all()
     return render(request, 'index.html', {
-        'task': task
+        'tasks': tasks
     })
 
 
 def categories(request):
     categories = Category.objects.all()
+    tasks = Task.objects.all()
     return render(request, 'categories.html', {
-        'categories': categories
+        'categories': categories,
+        'tasks': tasks
     })
 
 
 def add_category(request):
+    tasks = Task.objects.all()
     if request.method == 'POST':
         name = request.POST.get('name')
         color = request.POST.get('color')
@@ -27,7 +30,9 @@ def add_category(request):
                 color=color
             )
             category.save()
-    return render(request, 'add_category.html')
+    return render(request, 'add_category.html', {
+        'tasks': tasks
+    })
 
 
 def edit_category(request, category_id):
