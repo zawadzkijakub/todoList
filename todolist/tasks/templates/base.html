@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+
+    {% block extra_headers %}
+
+    {% endblock %}
+
 </head>
+
 <body>
-$END$
+
+  <header>
+    <nav><ul>
+      <a href="{% url 'index' %}">Home</a>
+      <a href="{% url 'categories-list' %}">Categories</a>
+      <a href="{% url 'add-category' %}">Add category</a>
+      <a href="{% url 'tasks-list' %}">Tasks ({{ tasks.count }})</a>
+      <a href="{% url 'add-tasks' %}">Add tasks</a>
+    </ul></nav>
+  </header>
+
+  <section class="wrapper">
+    {% block content %}
+
+    {% endblock %}
+  </section>
+
+  <footer>
+    <h6> Never put off until tomorrow what can be done today :) </h6>
+  </footer>
 </body>
 </html>
